@@ -46,7 +46,34 @@ type Preset =
   | "dreamy"
   | "dramatic"
   | "emerald"
-  | "infrared";
+  | "infrared"
+  | "golden"
+  | "arctic"
+  | "pastel"
+  | "urban"
+  | "forest"
+  | "coral"
+  | "midnight"
+  | "bronze"
+  | "candy"
+  | "haze"
+  | "film"
+  | "paradise"
+  | "rose"
+  | "teal"
+  | "autumn"
+  | "ocean"
+  | "desert"
+  | "lavender"
+  | "cyberpunk"
+  | "moody"
+  | "bleach"
+  | "cross"
+  | "sienna"
+  | "mint"
+  | "dusk"
+  | "retro"
+  | "soft";
 
 type ControlTab =
   | "adjustments"
@@ -79,6 +106,10 @@ interface FilterState {
   vignette: number;
   noise: number;
   pixelate: number;
+  clarity: number;
+  dehaze: number;
+  texture: number;
+  structure: number;
 }
 
 interface TransformState {
@@ -112,6 +143,10 @@ const DEFAULT_FILTERS: FilterState = {
   vignette: 0,
   noise: 0,
   pixelate: 0,
+  clarity: 0,
+  dehaze: 0,
+  texture: 0,
+  structure: 0,
 };
 
 const DEFAULT_TRANSFORM: TransformState = {
@@ -154,6 +189,33 @@ const PRESETS: { id: Preset; label: string; emoji: string }[] = [
   { id: "dramatic", label: "Dramatic", emoji: "🎭" },
   { id: "emerald", label: "Emerald", emoji: "💚" },
   { id: "infrared", label: "Infrared", emoji: "🔴" },
+  { id: "golden", label: "Golden", emoji: "🌟" },
+  { id: "arctic", label: "Arctic", emoji: "🧊" },
+  { id: "pastel", label: "Pastel", emoji: "🌸" },
+  { id: "urban", label: "Urban", emoji: "🏙" },
+  { id: "forest", label: "Forest", emoji: "🌲" },
+  { id: "coral", label: "Coral", emoji: "🪸" },
+  { id: "midnight", label: "Midnight", emoji: "🌙" },
+  { id: "bronze", label: "Bronze", emoji: "🥉" },
+  { id: "candy", label: "Candy", emoji: "🍭" },
+  { id: "haze", label: "Haze", emoji: "🌫" },
+  { id: "film", label: "Film", emoji: "🎞" },
+  { id: "paradise", label: "Paradise", emoji: "🌺" },
+  { id: "rose", label: "Rose", emoji: "🌹" },
+  { id: "teal", label: "Teal", emoji: "🩵" },
+  { id: "autumn", label: "Autumn", emoji: "🍂" },
+  { id: "ocean", label: "Ocean", emoji: "🌊" },
+  { id: "desert", label: "Desert", emoji: "🏜" },
+  { id: "lavender", label: "Lavender", emoji: "💜" },
+  { id: "cyberpunk", label: "Cyberpunk", emoji: "🤖" },
+  { id: "moody", label: "Moody", emoji: "🌧" },
+  { id: "bleach", label: "Bleach", emoji: "⬜" },
+  { id: "cross", label: "Cross", emoji: "✝" },
+  { id: "sienna", label: "Sienna", emoji: "🟤" },
+  { id: "mint", label: "Mint", emoji: "🌿" },
+  { id: "dusk", label: "Dusk", emoji: "🌆" },
+  { id: "retro", label: "Retro", emoji: "📺" },
+  { id: "soft", label: "Soft", emoji: "☁" },
 ];
 
 function applyPreset(preset: Preset): FilterState {
@@ -291,6 +353,283 @@ function applyPreset(preset: Preset): FilterState {
         saturation: 150,
         contrast: 120,
       };
+    case "golden":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 110,
+        contrast: 105,
+        saturation: 120,
+        hue: 20,
+        temperature: 40,
+        highlights: 15,
+        sepia: 20,
+      };
+    case "arctic":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 115,
+        contrast: 95,
+        saturation: 60,
+        temperature: -50,
+        hue: 195,
+        highlights: 20,
+      };
+    case "pastel":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 115,
+        contrast: 85,
+        saturation: 60,
+        vibrance: 80,
+        opacity: 92,
+        tint: 10,
+      };
+    case "urban":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 90,
+        contrast: 135,
+        saturation: 70,
+        shadows: -20,
+        vignette: 35,
+        noise: 15,
+      };
+    case "forest":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 100,
+        contrast: 110,
+        saturation: 130,
+        hue: 110,
+        temperature: -10,
+        shadows: 10,
+      };
+    case "coral":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 108,
+        contrast: 105,
+        saturation: 130,
+        hue: 15,
+        temperature: 25,
+        tint: 15,
+      };
+    case "midnight":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 75,
+        contrast: 130,
+        saturation: 80,
+        hue: 220,
+        temperature: -40,
+        vignette: 50,
+      };
+    case "bronze":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 105,
+        contrast: 115,
+        saturation: 100,
+        hue: 30,
+        temperature: 35,
+        sepia: 30,
+        shadows: -10,
+      };
+    case "candy":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 120,
+        contrast: 110,
+        saturation: 200,
+        vibrance: 180,
+        hue: 310,
+        tint: 20,
+      };
+    case "haze":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 120,
+        contrast: 75,
+        saturation: 60,
+        blur: 1,
+        opacity: 88,
+        highlights: 25,
+      };
+    case "film":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 100,
+        contrast: 105,
+        saturation: 85,
+        sepia: 15,
+        noise: 20,
+        vignette: 25,
+        shadows: 10,
+      };
+    case "paradise":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 115,
+        contrast: 110,
+        saturation: 160,
+        hue: 165,
+        temperature: -15,
+        vibrance: 150,
+        highlights: 10,
+      };
+    case "rose":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 108,
+        contrast: 105,
+        saturation: 120,
+        hue: 340,
+        temperature: 20,
+        tint: 20,
+      };
+    case "teal":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 100,
+        contrast: 110,
+        saturation: 130,
+        hue: 175,
+        temperature: -20,
+      };
+    case "autumn":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 105,
+        contrast: 115,
+        saturation: 110,
+        hue: 25,
+        temperature: 35,
+        sepia: 15,
+        shadows: 10,
+      };
+    case "ocean":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 100,
+        contrast: 110,
+        saturation: 140,
+        hue: 200,
+        temperature: -30,
+        highlights: 10,
+      };
+    case "desert":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 110,
+        contrast: 105,
+        saturation: 90,
+        hue: 35,
+        temperature: 50,
+        sepia: 25,
+      };
+    case "lavender":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 110,
+        contrast: 95,
+        saturation: 80,
+        hue: 270,
+        tint: 25,
+        opacity: 93,
+      };
+    case "cyberpunk":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 105,
+        contrast: 145,
+        saturation: 200,
+        hue: 285,
+        vibrance: 180,
+        vignette: 30,
+      };
+    case "moody":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 85,
+        contrast: 130,
+        saturation: 70,
+        shadows: -20,
+        highlights: -15,
+        vignette: 45,
+      };
+    case "bleach":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 120,
+        contrast: 115,
+        saturation: 50,
+        highlights: 30,
+        opacity: 90,
+      };
+    case "cross":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 105,
+        contrast: 120,
+        saturation: 130,
+        hue: 195,
+        sepia: 10,
+        vignette: 20,
+      };
+    case "sienna":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 100,
+        contrast: 110,
+        saturation: 100,
+        hue: 20,
+        temperature: 30,
+        sepia: 40,
+        shadows: 5,
+      };
+    case "mint":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 108,
+        contrast: 100,
+        saturation: 110,
+        hue: 150,
+        temperature: -15,
+        tint: 10,
+      };
+    case "dusk":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 90,
+        contrast: 120,
+        saturation: 130,
+        hue: 15,
+        temperature: 25,
+        vignette: 30,
+        highlights: -10,
+      };
+    case "retro":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 100,
+        contrast: 95,
+        saturation: 80,
+        sepia: 35,
+        noise: 18,
+        vignette: 40,
+        hue: 10,
+      };
+    case "soft":
+      return {
+        ...DEFAULT_FILTERS,
+        brightness: 115,
+        contrast: 85,
+        saturation: 75,
+        blur: 0.5,
+        opacity: 94,
+        highlights: 15,
+        tint: 8,
+      };
   }
 }
 
@@ -299,10 +638,18 @@ function buildCssFilter(f: FilterState): string {
   const gammaFactor = f.gamma / 100;
   const temperatureHue = f.temperature > 0 ? f.temperature / 4 : 0;
   const tintValue = f.tint > 0 ? f.tint / 100 : 0;
+  // Clarity: midtone contrast boost
+  const clarityContrast = 1 + (f.clarity / 100) * 0.5;
+  const clarityBrightness = 1 - (f.clarity / 100) * 0.05;
+  // Dehaze: contrast + saturation punch to cut through haze
+  const dehazeContrast = 1 + (f.dehaze / 100) * 0.4;
+  const dehazeSaturate = 1 + (f.dehaze / 100) * 0.3;
+  // Structure: micro-contrast (subtle contrast layering)
+  const structureContrast = 1 + (f.structure / 100) * 0.35;
   return [
-    `brightness(${effectiveBrightness})`,
-    `contrast(${f.contrast / 100})`,
-    `saturate(${(f.saturation / 100) * (f.vibrance / 100)})`,
+    `brightness(${effectiveBrightness * clarityBrightness})`,
+    `contrast(${(f.contrast / 100) * clarityContrast * dehazeContrast * structureContrast})`,
+    `saturate(${(f.saturation / 100) * (f.vibrance / 100) * dehazeSaturate})`,
     `hue-rotate(${f.hue + temperatureHue}deg)`,
     `blur(${f.blur}px)`,
     `sepia(${f.sepia / 100})`,
@@ -1006,6 +1353,10 @@ export default function PhotoEditor() {
     filters.opacity !== 100 ||
     filters.blur !== 0 ||
     filters.sharpen !== 0 ||
+    filters.texture !== 0 ||
+    filters.clarity !== 0 ||
+    filters.dehaze !== 0 ||
+    filters.structure !== 0 ||
     filters.sepia !== 0 ||
     filters.grayscale !== 0 ||
     filters.invert !== 0 ||
@@ -1750,9 +2101,45 @@ export default function PhotoEditor() {
                   label="Pixelate"
                   icon={<Palette size={14} />}
                   min={0}
-                  max={20}
+                  max={50}
                   value={filters.pixelate}
                   onChange={(v) => setFilter("pixelate", v)}
+                  ocid="photo.input"
+                />
+                <SliderRow
+                  label="Clarity"
+                  icon={<Zap size={14} />}
+                  min={0}
+                  max={100}
+                  value={filters.clarity}
+                  onChange={(v) => setFilter("clarity", v)}
+                  ocid="photo.input"
+                />
+                <SliderRow
+                  label="Dehaze"
+                  icon={<Eye size={14} />}
+                  min={0}
+                  max={100}
+                  value={filters.dehaze}
+                  onChange={(v) => setFilter("dehaze", v)}
+                  ocid="photo.input"
+                />
+                <SliderRow
+                  label="Texture"
+                  icon={<Layers size={14} />}
+                  min={0}
+                  max={100}
+                  value={filters.texture}
+                  onChange={(v) => setFilter("texture", v)}
+                  ocid="photo.input"
+                />
+                <SliderRow
+                  label="Structure"
+                  icon={<Contrast size={14} />}
+                  min={0}
+                  max={100}
+                  value={filters.structure}
+                  onChange={(v) => setFilter("structure", v)}
                   ocid="photo.input"
                 />
               </motion.div>
